@@ -100,6 +100,8 @@ public class TelaPlaylistController implements Initializable {
         listaMusicasPlaylist.setOnMouseClicked(event -> {
 			if (event.getClickCount() == 2 && !listaMusicasPlaylist.getSelectionModel().isEmpty() ) {
 				indexMusicaPlaylist = getListaMusicaPlaylist().indexOf(listaMusicasPlaylist.getSelectionModel().getSelectedItem());
+				mediaPlayer.stop();
+				if(running) cancelTimer();
 				file = new File(getListaMusicaPlaylist().get(indexMusicaPlaylist).getCaminhoArquivo());
 				media = new Media(file.toURI().toString());
 				mediaPlayer = new MediaPlayer(media);

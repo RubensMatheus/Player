@@ -141,6 +141,8 @@ public class TelaPrincipalController implements Initializable {
 		 listaMusicas.setOnMouseClicked(event -> {
 			if (event.getClickCount() == 2 && !listaMusicas.getSelectionModel().isEmpty() ) {
 				indexMusicaGeral = getListaMusicaItems().indexOf(listaMusicas.getSelectionModel().getSelectedItem());
+				mediaPlayer.stop();
+				if(running) cancelTimer();
 				file = new File(getListaMusicaItems().get(indexMusicaGeral).getCaminhoArquivo());
 				media = new Media(file.toURI().toString());
 				mediaPlayer = new MediaPlayer(media);
